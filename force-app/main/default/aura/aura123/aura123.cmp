@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global">
+    <lightning:card>
+    <p>
+        <lightning:icon iconName="action:delete" alternativeText="Delete" title="Delete" />
+        <lightning:helptext
+        content="{!$Label.c.customlabel}"
+    />
+    </p>
+</lightning:card>
+</aura:component>	

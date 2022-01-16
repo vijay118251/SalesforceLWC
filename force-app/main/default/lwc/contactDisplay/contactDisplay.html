@@ -1,0 +1,21 @@
+<template>
+    <lightning-card
+        title="Apex Wire Method With Params" icon-name="custom:custom63"
+    >
+        <div class="slds-var-m-around_medium">
+            <lightning-input
+                type="search"
+                onchange={handleKeyChange}
+                class="slds-var-m-bottom_small"
+                label="Search"
+                value={searchKey}
+            ></lightning-input>
+            <template if:true={contacts.data}>
+                <template for:each={contacts.data} for:item="contact">
+                    <p key={contact.Id}>{contact.Name} &nbsp;{contact.Phone} &nbsp;{contact.Email} </p> 
+                </template>
+            </template>
+        </div>
+
+    </lightning-card>
+</template>

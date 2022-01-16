@@ -1,0 +1,38 @@
+<template>
+    <lightning-card
+        title="ApexImperativeMethodWithParams"
+        icon-name="custom:custom63"
+    >
+        <div class="slds-var-m-around_medium">
+            <lightning-layout
+                vertical-align="end"
+                class="slds-var-m-bottom_small"
+            >
+                <lightning-layout-item flexibility="grow">
+                    <lightning-input
+                        type="search"
+                        onchange={handleKeyChange}
+                        label="Search"
+                        value={searchKey}
+                    ></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item class="slds-var-p-left_xx-small">
+                    <lightning-button
+                        label="Search"
+                        onclick={handleSearch}
+                    ></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+            <template if:true={accounts}>
+                <template for:each={accounts} for:item="acc">
+                    <p key={acc.Id}>{acc.Name} &nbsp; {acc.Industry} &nbsp; {acc.Rating} &nbsp; {acc.AnnualRevenue}</p>
+                    <template for:each={acc.Contacts} for:item="con">
+                        <p key={con.Id}>{con.FirstName} &nbsp; {con.LastName} &nbsp; {con.Department}</p>
+                    </template>
+                   <!-- <p key={acc.Id}>{acc.Contacts.FirstName} &nbsp; {acc.Contacts.LastName} &nbsp; {acc.Contacts.Department}</p>-->
+                </template>
+            </template>
+        </div>
+
+    </lightning-card>
+</template>

@@ -1,0 +1,23 @@
+<template>
+    <lightning-card  title="LWC FORM">
+        <h1>{message}</h1> <br>
+        <template if:true={message1}>
+            <p>DISPLAYED COMPONENTS   </p>
+        </template>
+        <h1> Hello,{firstName} {lastName} </h1>
+<lightning-input type="text" name="txtFirst" label="Enter First Name" onchange={changeText}  placeholder="type here..."></lightning-input> <br> 
+<lightning-input type="text" name="txtLast" label="Enter Last Name" onchange={changeText} placeholder="type here..."></lightning-input> <br>
+<lightning-button variant="Brand" label="Display Message" title="Primary action" onclick={handleClick} class="mslds-var-m-left_x-small"></lightning-button>
+<lightning-button variant="destructive" label="Submit" title="Destructive action" onclick={handleClick1} class="slds-var-m-left_x-small"></lightning-button> <br>
+
+<lightning-input type="checkbox"  label="SHOW" onchange={handleChange}></lightning-input>
+<template if:true={areDetailsVisible}>
+    <p>  
+        Bottles
+    </p>
+    <img src="https://media1.giphy.com/media/JRsY1oIVA7IetTkKVO/source.gif"
+    >
+</template>
+
+    </lightning-card>      
+</template>

@@ -1,0 +1,65 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card  title="To-Do List" style="width: 100%;">
+        <p class="slds-var-p-around_medium">Tasks</p>
+         <!-- Sync Action -->
+         <lightning-button-icon 
+         slot="actions"
+         icon-name="utility:sync"
+         alternative-text="Refresh"
+         onclick={refreshTodoList}
+         title="Refresh">
+     </lightning-button-icon>
+        <lightning-layout>
+            <lightning-layout-item padding="around-small" size="12">
+                <template if:true={processing}>
+                    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                </template>    
+                <ul class="slds-has-dividers_around-space">
+                    <template for:each={todoTasks} for:item="todoTask">
+                    <li  key={todoTask.id}>
+                        <lightning-layout
+                            vertical-align="center"
+                            horizontal-align="spread"
+                        >
+                        <lightning-input type="checkbox" name="input1" label="Enter"  variant="label-hidden" onclick={handleClick} ></lightning-input>
+                            <lightning-layout-item padding="horizontal-small" class="slds-border_bottom">
+                                {todoTask.name}
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="horizontal-small">
+                                <lightning-button-icon
+                                    icon-name="utility:close"
+                                    onclick={deleteTaskFromList}
+                                    name={todoTask.id}
+                                    alternative-text="Close"
+                                    title="Close"
+                                    class="my-icon"
+                                ></lightning-button-icon>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </li>
+                </template>
+                </ul>
+            </lightning-layout-item>
+        </lightning-layout>
+       
+        <p slot="footer">
+            <lightning-input
+                        type="text"
+                        placeholder="Enter new task"
+                        variant="label-hidden"
+                        value={newTask}
+                        label="New Task"
+                        onchange={updateNewTask}
+                        required
+                    > </lightning-input>
+                    <lightning-button
+                    variant="base"
+                    label="Add"
+                    onclick={addTaskToList}
+                    class="slds-align_absolute-center"
+                ></lightning-button>
+        </p>
+    </lightning-card>
+    
+</template>

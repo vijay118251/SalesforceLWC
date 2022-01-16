@@ -1,0 +1,40 @@
+<template>
+    <div class="slds-box slds-p-around_small" style="background-color: rgb(187, 255, 255);">
+        <lightning-input label="Enter Opportunity Name"
+                        placeholder="Opportunity Name"
+                        value={searchOpportunityName}
+                        onchange={opportunityNameChange}>
+        </lightning-input>
+        <template if:true={opportunities}>
+            <div class="slds-grid slds-wrap sds-gutters">
+                <template for:each={opportunities} for:item="opp">
+                    <div class="slds-col slds-size_1-of-3 slds-p-around_small" key={opp.Id}>
+                        <lightning-card title={opp.Name}>
+                            <div slot="actions">
+                                <template if:true={opp.IsClosed}>
+                                    <span style="color: blue; font-weight: bold;">Already Closed</span>
+                                </template>
+                                <template if:false={opp.IsClosed}>
+                                    <lightning-button   name={opp.Id}
+                                                        value={opp.Id}
+                                                        label="Close Opportunity"
+                                                        onclick={passOpportunityToClose}
+                                    ></lightning-button>
+ 
+                                </template>
+                            </div>
+                        
+                            <p class="slds-p-horizontal_small">
+                                <span style="color: blue;">Stage:</span>{opp.StageName}  
+                              </p>
+                              <p class="slds-p-horizontal_small">
+                                <span style="color: blue;">Close Date:</span>{opp.CloseDate}  
+                              </p>
+                        
+                        </lightning-card>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>    
+</template>

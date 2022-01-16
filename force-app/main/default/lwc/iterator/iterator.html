@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title={title} icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <template iterator:it={contacts}>
+                <div key={it.value.Id}>
+                    <div if:true={it.first} class="list-first">  </div>
+                    {it.value.Name}, {it.value.Title}
+                    <div if:true={it.last} class="list-last">  </div>
+                    
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

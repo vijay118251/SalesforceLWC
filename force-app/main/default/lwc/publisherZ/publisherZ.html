@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Component Z" icon-name="custom:custom14">
+        <div class="slds-var-m-around_medium">
+            <template if:true={dataReceived}>
+                <template for:each={dataReceived} for:item="acc">
+                    <p key={acc.Id}>{acc.Name} &nbsp; {acc.Industry} &nbsp; {acc.Rating} &nbsp; {acc.AnnualRevenue}</p>
+                    <template for:each={acc.Contacts} for:item="con">
+                        <p key={con.Id}>{con.FirstName} &nbsp; {con.LastName} &nbsp; {con.Department}</p>
+                    </template>
+              
+                </template>
+            </template>  
+        </div>
+      </lightning-card>
+    
+</template>
