@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Dispatcher Request LMS Channel</masterLabel>
+		<isExposed>true</isExposed>
+		<description>This LMS stores request information.</description>
+        <lightningMessageFields>
+            <fieldName>method</fieldName>
+            <description>This is the data to be changed</description>
+        </lightningMessageFields>
+        <lightningMessageFields>
+            <fieldName>request</fieldName>
+            <description>This is the data to be changed</description>
+        </lightningMessageFields>
+        <lightningMessageFields>
+            <fieldName>clearCache</fieldName>
+            <description>This is the data to be changed</description>
+        </lightningMessageFields>
+</LightningMessageChannel>  
