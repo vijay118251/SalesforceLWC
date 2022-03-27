@@ -87,26 +87,29 @@ public with sharing class AccountSelector {
     public Account selectFromMethod(Set<Id> accountID) {
         Account acc = new Account();
         final string wher = 'Id IN :accountId';
-        final String execQuery = generateQueryString(getFieldList(), wher, this.orderBy, this.stripInaccessible);
+        final String execQuery = generateQueryString(getFieldList(), wher, this.orderBy, this.enforceSecurity);
+        system.debug('exe'+execQuery);
         acc = Database.query(execQuery);
         return acc;
     }
 
     /* generate dynamic query for account object */
-    public static String generateQueryString(List<String> fields, String wher, String order, Boolean stripInaccessible) {
-        return 'SELECT ' + String.join(fields,', ') + ' FROM Account' + ' WHERE ' + String.escapeSingleQuotes(wher) + ' LIMIT 1';
+    public static String generateQueryString(List<String> fields, String wher, String order, Boolean enforceSecurity) {
+        return 'SELECT ' + String.join(fields,', ') + ' FROM Account' + ' WHERE ' + String.escapeSingleQuotes(wher) + 
+        (enforceSecurity ? ' WITH SECURITY_ENFORCED' : '') 
+        + ' LIMIT 1';
     }
     
      /* generate dynamic query for case object */
-    public static String generateCaseQueryString(List<String> fields, String wher, String order, Boolean stripInaccessible) {
+    public static String generateCaseQueryString(List<String> fields, String wher, String order, Boolean enforceSecurity) {
         return 'SELECT ' + String.join(fields,', ') + ' FROM Case' + ' WHERE ' + String.escapeSingleQuotes(wher);
     }
-
+ 
     /*caseMethod*/
     public List<Case> caseMethod(Set<Id> accID) {
         List<Case> cse = new List<Case>();
         final string wher = 'AccountId IN :accID';
-        final String execQuery = generateCaseQueryString(getCaseFieldList(), wher, this.orderBy, this.stripInaccessible);
+        final String execQuery = generateCaseQueryString(getCaseFieldList(), wher, this.orderBy, this.enforceSecurity);
         cse = Database.query(execQuery);
         return cse;
     }

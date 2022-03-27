@@ -18,13 +18,15 @@ public static final string CLASS_NAME = 'AccountElementController';
         @AuraEnabled
         public String identifier {get; set;}
     }
-
+ 
+    
+    @AuraEnabled(cacheable=true)
     public static AccountWrapper selectFromId(String accId) {
         final AccountWrapper accWp = new AccountWrapper();
         if(accId!=null && hasUserGotObjectAccess()) {
             try {
                 final AccountSelector selector = new AccountSelector();
-                selector.setStripInaccessible(true);
+                selector.setEnforceSecurity(true);
                 final Account acc = selector.selectFromMethod(new Set<Id> {accId} );
                 final List<Case> cases = selector.caseMethod(new Set<Id> {accId});
                 if(acc!=null || !cases.isEmpty()) {

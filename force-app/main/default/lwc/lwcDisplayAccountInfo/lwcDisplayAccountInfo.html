@@ -1,0 +1,51 @@
+<template>
+    <lightning-card
+    title = "Display Account Information"
+    icon-name = "custom:custom63" 
+    >
+    <div class="slds-m-around_medium">
+        <template if:true={accounts}>
+            <div class="slds-grid sld-wrap slds-p-around_small">
+                <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Account Name:</b>
+                    <p>{accounts.Name}</p>  
+                </div>
+                <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Account Industry:</b>
+                    <p>{accounts.Industry}</p>  
+                </div>
+            </div>
+            <div class="slds-grid sld-wrap slds-p-around_small">
+                <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Account Rating:</b>
+                    <p>{accounts.Rating}</p>  
+                </div>
+                <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Annual Revenue:</b>
+                    <p>{accounts.AnnualRevenue}</p>  
+                </div>
+            </div>
+        </template>
+    </div>
+    <!--<div class="slds-m-around_medium">
+        <template if:true={cases}>
+            <template for:each={cases} for:item="cse">
+                <div class="slds-grid sld-wrap slds-p-around_small" key={cse.id}>
+                    <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Case Number:</b>
+                        <p>{cse.caseNumber}</p>  
+                    </div>
+                    <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Case Origin:</b>
+                        <p>{cse.Origin}</p>  
+                    </div>
+                </div>
+                <div class="slds-grid sld-wrap slds-p-around_small" key={cse.id}>
+                    <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Case Priority:</b>
+                        <p>{cse.Priority}</p>  
+                    </div>
+                    <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Case Status:</b>
+                        <p>{cse.Status}</p>  
+                    </div>
+                </div>
+            </template>
+
+        </template>
+    </div>-->
+    </lightning-card>
+    
+</template>
