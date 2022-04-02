@@ -6,9 +6,10 @@ export default class DispatcherOrchestratorVitalityProgramme extends DispatcherO
     elementMap = {};
     constructor() {
         super();
-        this.elementMap.AccountFire = new  LwcDispatcherAccount();
+        this.elementMap.AccountFire = new LwcDispatcherAccount();
     }
     connectedCallback() {
-        this.subscriberMC();
+        console.log('inside utility comp');
+        this.subscribeMC();
     }
 }

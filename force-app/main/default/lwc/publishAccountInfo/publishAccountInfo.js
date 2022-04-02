@@ -31,6 +31,7 @@ export default class PublishAccountInfo extends LightningElement {
             this.accounts = undefined;
             this.errors = error;
         });
+        this.handlePublish();
         
     }
 
