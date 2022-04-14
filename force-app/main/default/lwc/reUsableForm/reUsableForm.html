@@ -1,0 +1,16 @@
+<template>
+    <lightning-record-edit-form object-api-name={objectName} onsuccess={handleSuccess}>
+        <div class="slds-box slds-theme_default slds-m-around_medium">
+            <template for:each={fieldList} for:item="fieldName">
+                <lightning-input-field key={fieldName} field-name={fieldName}>
+                </lightning-input-field>
+            </template>
+
+            <div class="slds-m-top_medium slds-align_absolute-center">
+                <lightning-button variant="brand" type="submit" name="save" label={buttonLabel}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-record-edit-form>
+    
+</template>
