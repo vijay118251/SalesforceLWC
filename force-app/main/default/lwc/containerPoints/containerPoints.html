@@ -1,0 +1,26 @@
+<template>
+    <template if:true={enablePointsDetails}>
+    <lightning-card  variant="Narrow"  title="Rewards" icon-name="utility:ribbon">
+        <lightning-tabset>
+        <lightning-tab label="Active Points">
+            <div class="slds-var-m-around_medium"
+            data-page= "Points_Page"
+            data-navigation= "PointsPage"
+            data-rewardname= "Points"
+            onclick={handleOnIconClick}>
+            <!--image display-->
+                <img
+                src={image}
+                alt="Reward Logo"
+                width="150"
+                height="150"
+                />
+            </div>
+             <div class="slds-var-m-around_medium">
+                <h2 class="slds-p-left_xx-large"><a href="#"  onclick={handleOnClick}><b>Netflix</b></a></h2>
+             </div>
+        </lightning-tab>
+        </lightning-tabset>
+    </lightning-card>
+    </template>
+</template>

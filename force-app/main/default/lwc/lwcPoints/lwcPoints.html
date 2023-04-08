@@ -1,0 +1,8 @@
+<template>
+        <template lwc:if={enablePointsDetails}>
+        <c-container-points page-name={pagename} plan-type={planType} rec-id={recordId}></c-container-points>
+        </template>
+        <template lwc:else>
+            <p class="slds-p-horizontal_small">No Points</p>
+        </template>
+</template>

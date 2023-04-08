@@ -1,0 +1,47 @@
+<template>
+<template if:true={showContainer}>
+    <lightning-card  variant="Narrow" title="Plan Details">
+        <article class="slds-box slds-box_xx-small">
+                <div class="slds-col">
+            <div class="slds-grid sld-wrap slds-p-around_small">
+                <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Plan Code:</b>
+                    <p>{planDetails.planCode}</p>  
+                </div>
+                <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Plan Start Date:</b>
+                    <p>{planDetails.planStartDate}</p>  
+                </div>
+            </div>
+            <div class="slds-grid sld-wrap slds-p-around_small">
+                <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Renewal Date:</b>
+                    <p>{planDetails.renewalDate}</p>  
+                </div>
+                <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Plan Number:</b>
+                    <p>{planDetails.vitalityPlanId}</p>  
+                </div>
+            </div>
+                </div>
+        </article>
+    </lightning-card>
+    <lightning-card>
+        <lightning-tabset>
+            <!--display tab-->
+            <lightning-tab label="Family History">
+                <article class="slds-card">
+                    <article class="slds-card table-margin-padding">
+                    <!--display datatable-->
+                        <lightning-datatable
+                            key-field="id"
+                            show-row-number-column
+                            columns={columnList}
+                            data={familyList}
+                            hide-checkbox-column
+                            resize-column-disabled
+                        >
+                        </lightning-datatable>
+                    </article>
+                </article>
+            </lightning-tab>
+        </lightning-tabset>
+    </lightning-card>
+    </template>
+</template>
