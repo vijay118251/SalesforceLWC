@@ -1,4 +1,4 @@
-public class VehicleSelector {
+public inherited sharing class VehicleSelector {
     
     /*Enforce Security*/
     @TestVisible
@@ -21,15 +21,33 @@ public class VehicleSelector {
         this.fieldSet.add(FieldGroup.TESTVEHICLE);
     }
     
+     public VehicleSelector(Set<FieldGroup> fields) {
+        this.fieldSet.addAll(new List<FieldGroup>(fields));
+    }
+    
     /*  allows the enforceSecurity constructed*/
-    public Boolean setEnforceSecurity(Boolean enforce) {
-        return this.enforceSecurity = enforce;
+    public VehicleSelector setEnforceSecurity(Boolean enforce) {
+        this.enforceSecurity = enforce;
+        return this;
+    }
+    
+     /*set setOrderBy clauses */
+    public VehicleSelector setOrderBy(String order) {
+        this.orderBy = order;
+        return this;
     }
     
     /* strip inaccessible method*/
-    public Boolean setStripInaccessible(Boolean strip) {
-        return this.stripInaccessible = strip;
+    public VehicleSelector setStripInaccessible(Boolean strip) {
+        this.stripInaccessible = strip;
+        return this;
         
+    }
+    
+    /*add Field Set*/
+    public VehicleSelector addFieldSet(FieldGroup groupType) {
+        this.fieldSet.add(groupType);
+        return this;
     }
     
     /*dynamicQuery*/
@@ -39,13 +57,23 @@ public class VehicleSelector {
         final String execQuery=generateQueryString(fieldList(),wher,this.orderBy,this.enforceSecurity);
         system.debug('execQuery-->'+execQuery);
         vhRecs = Database.query(execQuery);
-        return vhRecs;
+        return this.stripInaccessible ? sanitiseResults(vhRecs): vhRecs;
+    }
+    
+    /*
+    * <Name>sanitiseResults</Name>
+    * <Summary>To implement the Security</Summary>
+    * <Parameter>records - List of sObject</Parameter>
+    */
+    private static List<vehicleInterest__c> sanitiseResults(List<vehicleInterest__c> records) {
+        return Security.stripInaccessible(AccessType.READABLE,records).getRecords();
     }
     
     /*
     * <Name>fieldList</Name>
     * <Summary>To return a list of strings</Summary>
     */
+     @TestVisible
     public List<String> fieldList(){
         final List<String> returnList = new List<String>();
         /*Vehicle Interest*/
@@ -56,6 +84,7 @@ public class VehicleSelector {
     }
     
     /*getVehicleFields*/
+     @TestVisible
     public Set<String> getVehicleFields() {
         return new Set<String> {'Account__c',
             					'X4_Wheel_Drive__c',
@@ -65,7 +94,9 @@ public class VehicleSelector {
             					'Name',
             					'Type__c',
             					'Sunroof__c',
-            					'Phone__c'
+            					'Phone__c',
+                                'carStatus__c',
+                                'Model__c'
             
         };
     }
@@ -74,7 +105,8 @@ public class VehicleSelector {
     public String generateQueryString(List<String> fields,String Wher,String order,Boolean enforceSecurity){
         final String genQuery = 'SELECT '+ String.join(fields,', ')+ 
             					' FROM vehicleInterest__c '+ 'WHERE '+String.escapeSingleQuotes(wher) + 
-            					(enforceSecurity? ' WITH SECURITY_ENFORCED' : '');
+            					(enforceSecurity? ' WITH SECURITY_ENFORCED' : '') +
+            					(String.isNotBlank(order)? ' ORDER BY ' + String.escapeSingleQuotes(order) : '');
         return genQuery;
     }
 }

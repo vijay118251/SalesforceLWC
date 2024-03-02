@@ -1,6 +1,6 @@
 // Parser class for GoRestApi
 public class GoRestWrapper{
-	public Integer id;
+	public Integer id; 
 	public String name;
 	public String email;
 	public String gender;

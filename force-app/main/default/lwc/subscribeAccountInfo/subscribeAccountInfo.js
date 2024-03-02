@@ -18,7 +18,7 @@ export default class SubscribeAccountInfo extends LightningElement {
     }
 
     handleMessage(message) {
+        console.log('message:::',(message));
         this.dataReceived = message.accountData.value? message.accountData.value:'No Msg';
-        console.log('message:::',this.dataReceived);
     }
 }

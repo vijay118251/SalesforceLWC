@@ -2,7 +2,7 @@ import { LightningElement } from 'lwc';
 import fetchAccountDetails from '@salesforce/apex/AccountManager.fetchAccountDetails';
 
 export default class ApexImperativeMethodWithParams extends LightningElement {
-    searchKey = '';
+    searchKey = 'Vijay';
     accounts;
     error;
     
@@ -11,7 +11,15 @@ export default class ApexImperativeMethodWithParams extends LightningElement {
         this.searchKey = event.target.value;
     }
 
+    connectedCallback() {
+        this.callout();
+    }
+
     handleSearch() {
+        this.callout();
+    }
+
+    callout() {
         fetchAccountDetails({ accName: this.searchKey })
             .then((result) => {
                 console.log(result);

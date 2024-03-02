@@ -38,8 +38,8 @@ export default class SubscriberC extends LightningElement {
             lms4Data: {value: this.accounts}
             
         };
-        console.log(this.accounts);
-        //console.log(lms4Data);
+        console.log('handleclick method',this.accounts);
+        console.log('payload',payload);
         publish(this.messageContext, ResponseMC, payload)
 
      }

@@ -4,7 +4,7 @@ import { createMessageContext, releaseMessageContext,publish} from 'lightning/me
 
 export default class PublisherA extends LightningElement {
     context = createMessageContext();
-    greeting = 'Vijay M';
+    greeting = 'Burlington Textiles Corp of America';
     changeHandler(event) {
       this.greeting = event.target.value;
     }
@@ -13,6 +13,7 @@ export default class PublisherA extends LightningElement {
         const message1 = {
             lms1Data: {value: this.greeting}
         };
+        console.log(message1);
         console.log(this.greeting);
         publish(this.context, SAMPLEMC1, message1);
 

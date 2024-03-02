@@ -3,7 +3,7 @@
  */
 public class PointsExternalSelector {
     /*Connection Service*/
-    private static final ConnectionService service = new ConnectionService('apidetails','GET','points');
+    private static final ConnectionServices service = new ConnectionServices('apidetails','GET','points');
     /*Enforce Security*/
     private Boolean enforceSecurity = false;
 

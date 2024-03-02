@@ -1,7 +1,7 @@
-import { LightningElement } from 'lwc';
+import { LightningElement,api } from 'lwc';
 
 export default class LDSCRecordEdit extends LightningElement {
-    recordId;
+   @api recordId;
     successHandler(event){
             this.recordId = event.detail.id;
         }

@@ -14,6 +14,6 @@ export default class SubscriberD extends LightningElement {
         },{scope: APPLICATION_SCOPE});
      }
      handleMessage(message) {       
-        this.messageReceived = message.lms2Data.value? message.lms2Data.value:'No msg';
+        this.messageReceived = message.lms2Data? message.lms2Data:'No msg';
      }
 }

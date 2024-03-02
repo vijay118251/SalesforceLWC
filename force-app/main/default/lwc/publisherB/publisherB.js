@@ -10,7 +10,7 @@ export default class PublisherB extends LightningElement {
 
     handleClick(event) {
         const message2 = {
-            lms2Data: {value: this.greetings}
+            lms2Data: this.greetings
         };
         publish(this.context, SAMPLEMC2, message2);
 

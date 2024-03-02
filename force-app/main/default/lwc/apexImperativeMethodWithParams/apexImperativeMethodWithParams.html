@@ -13,7 +13,6 @@
                         type="search"
                         onchange={handleKeyChange}
                         label="Search"
-                        value={searchKey}
                     ></lightning-input>
                 </lightning-layout-item>
                 <lightning-layout-item class="slds-var-p-left_xx-small">
@@ -29,7 +28,6 @@
                     <template for:each={acc.Contacts} for:item="con">
                         <p key={con.Id}>{con.FirstName} &nbsp; {con.LastName} &nbsp; {con.Department}</p>
                     </template>
-                   <!-- <p key={acc.Id}>{acc.Contacts.FirstName} &nbsp; {acc.Contacts.LastName} &nbsp; {acc.Contacts.Department}</p>-->
                 </template>
             </template>
         </div>

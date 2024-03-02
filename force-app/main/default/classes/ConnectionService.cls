@@ -32,7 +32,7 @@ public  with sharing class ConnectionService {
     the Url which is used by the buildRequest method
     */
     private String buildUrl(String endpoint) {
-        return !Test.isRunningTest() ? 'callout:' + CREDENTIAL_NAME + '/' + PRODUCT_SERVICE + endpoint
+        return !Test.isRunningTest() ? 'callout:' + CREDENTIAL_NAME + (String.isBlank(endpoint)?'':'/'+endpoint)
             : 'https://callout.' + CREDENTIAL_NAME + '.com/' + endpoint;
     }
 
@@ -43,6 +43,7 @@ public  with sharing class ConnectionService {
     */
     private HttpRequest buildRequest(String endpoint, String method, String body, Map < String, String > header) {
         final String uri = this.buildUrl(endpoint);
+        system.debug('uri-->'+uri);
         final HttpRequest req = new HttpRequest();
         req.setEndpoint(uri);
         req.setMethod(method);

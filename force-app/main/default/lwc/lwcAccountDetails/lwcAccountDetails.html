@@ -1,14 +1,24 @@
 <template>
-    <lightning-card title="Component" icon-name="custom:custom1">
+    <lightning-card title="Account Details" icon-name="custom:custom1">
         <div class="slds-var-m-around_medium">
-            <p>HELLO</p>
             <template if:true={display}>
-                <template for:each={display} for:item="acc">
-                    <p key={acc.Id}>{acc.Name} &nbsp; {acc.Industry} &nbsp; {acc.AnnualRevenue}</p>
-              
-                </template>
+                <div class="slds-grid sld-wrap slds-p-around_small">
+                    <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Account Name:</b>
+                        <p>{display.Name}</p>  
+                    </div>
+                    <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Account Industry:</b>
+                        <p>{display.Industry}</p>  
+                    </div>
+                </div>
+                <div class="slds-grid sld-wrap slds-p-around_small">
+                    <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Account Rating:</b>
+                        <p>{display.Rating}</p>  
+                    </div>
+                    <div class="slds-col slds-size_6-of-12 slds-p-bottom_medium"><b>Annual Revenue:</b>
+                        <p>{display.AnnualRevenue}</p>  
+                    </div>
+                </div>
             </template>  
           </div>   
-      </lightning-card>
-    
+      </lightning-card>  
 </template>
