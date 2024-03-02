@@ -1,6 +1,7 @@
 /* Author: Vijay M
 * Apex Trigger - VehicleTrigger
 */
+
 trigger VehicleTrigger on vehicleInterest__c (after insert,before insert,before update,after update,before delete) {
     
     //Before Insert
@@ -13,7 +14,7 @@ trigger VehicleTrigger on vehicleInterest__c (after insert,before insert,before 
         VehicleTriggerHandler.noUpdateVehicleName(Trigger.new);
     }
     
-    //Before Delete
+    /*Before Delete
     if(Trigger.isDelete && Trigger.isBefore) {
         VehicleTriggerHandler.CheckCarStatus(Trigger.old);
     }
@@ -23,9 +24,13 @@ trigger VehicleTrigger on vehicleInterest__c (after insert,before insert,before 
         VehicleTriggerHandler.triggerMethod(Trigger.new);
     }
     
+    //After Update
+    if(Trigger.isUpdate && Trigger.isAfter) {
+        VehicleTriggerHandler.UpdateContactCount(Trigger.new,Trigger.oldMap);
+    }
+    
     //After Delete
     if(Trigger.isDelete && Trigger.isAfter) {
         VehicleTriggerHandler.triggerEmail(Trigger.old);
-    }
- 
+    }*/
 }
