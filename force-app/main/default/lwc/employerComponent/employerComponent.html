@@ -1,0 +1,18 @@
+<!-- registrationForm.html -->
+<template>
+    <lightning-card  variant="Narrow"  title="Employee">
+        <lightning-tabset>
+        <lightning-tab label="Details" value="one">
+            <div class="slds-m-around_medium">
+                <lightning-datatable 
+                data={employeeDetails} 
+                columns={empColumns} 
+                key-field="id"
+                hide-checkbox-column
+                resize-column-disabled>
+                </lightning-datatable>
+            </div>
+         </lightning-tab>
+    </lightning-tabset>
+    </lightning-card>
+</template>

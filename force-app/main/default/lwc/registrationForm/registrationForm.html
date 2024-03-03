@@ -1,0 +1,15 @@
+<!-- registrationForm.html -->
+<template>
+    <lightning-card  variant="Narrow"  title="Registartion Form">
+        <lightning-tabset>
+        <lightning-tab label="Tab 1">
+            <div class="slds-var-p-around_medium slds-size_1-of-4">
+                <lightning-input data-num="age" type="number" label="Age" value={age} onchange={handleChange} max-length="3"></lightning-input>
+            </div>
+            <template lwc:if={showTab2}>
+                <c-sub-registration-form age={age} onerror={errorHandler}></c-sub-registration-form>
+            </template>
+        </lightning-tab>
+    </lightning-tabset>
+    </lightning-card>
+</template>
