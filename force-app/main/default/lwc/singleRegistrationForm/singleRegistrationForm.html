@@ -1,0 +1,26 @@
+<!-- registrationForm.html -->
+<template>
+    <lightning-card  variant="Narrow"  title="Registartion Form">
+        <lightning-tabset active-tab-value={activeTabValue}>
+        <lightning-tab label="Tab 1" value="one">
+            <div class="slds-var-p-around_medium slds-size_1-of-4">
+                <lightning-input data-num="age" type="number" label="Age" value={age} onchange={handleChange} max-length="3"></lightning-input>
+            </div>
+            <div class="slds-var-p-around_medium slds-size_1-of-4">
+                <lightning-input data-input="text" type="text" name="txt" label="Enter Name" value={name} onchange={handleNameChange} required></lightning-input>
+            </div>
+         </lightning-tab>
+         <template lwc:if={showTab2}>
+            <lightning-tab label="Tab 2" value="two">
+                <!-- UI elements for Tab 2, including occupation dropdown -->
+                <div class="slds-var-p-around_medium slds-size_1-of-4">
+                    <lightning-combobox label="Occupation" options={occupationOptions} value={selectedOccupation} onchange={handleOccupationChange}></lightning-combobox>
+                </div>
+                <template lwc:if={showSubmit}>
+                    <lightning-button label="Submit" onclick={handleSubmit} class="slds-p-around_small"></lightning-button>
+                </template>
+            </lightning-tab>
+        </template>
+    </lightning-tabset>
+    </lightning-card>
+</template>

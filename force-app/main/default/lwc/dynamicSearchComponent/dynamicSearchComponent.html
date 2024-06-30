@@ -1,0 +1,26 @@
+<template>
+    <lightning-card  title="Dynamic Search Component">
+        <div class="slds-p-around_medium">
+            <lightning-input
+            label="Search"
+            type="search"
+            onchange={handleChange}
+            value={searchTerm}
+        >
+        </lightning-input>
+        </div>
+        <template lwc:if={accountList}>
+            <div class="slds-m-around_medium">
+                <lightning-datatable 
+                data={accountList} 
+                columns={columns} 
+                key-field="Id"
+                onrowaction={handleRowAction}>>
+                </lightning-datatable>
+            </div>
+        </template>
+        <template lwc:if={displayResults}>
+            <p slot="footer">Selected Account is {selectedAccount}</p>
+        </template>
+    </lightning-card>
+</template>

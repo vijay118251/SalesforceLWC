@@ -1,0 +1,11 @@
+<template>
+    <lightning-tabset>
+        <lightning-tab label="Tab 2">
+            <!-- UI elements for Tab 2, including occupation dropdown -->
+            <div class="slds-var-p-around_medium slds-size_1-of-4">
+                <lightning-combobox label="Occupation" options={occupationOptions} value={selectedOccupation} onchange={handleOccupationChange}></lightning-combobox>
+            </div>
+        </lightning-tab>
+    </lightning-tabset>
+    <lightning-button label="Submit" onclick={handleSubmit} class="slds-p-around_small"></lightning-button>
+</template>
