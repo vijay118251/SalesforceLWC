@@ -1,0 +1,23 @@
+<template>
+    <lightning-card>
+        <div class="slds-box slds-box_x-small">
+            <p>This is Parent Component.</p>
+        </div>
+        <div class="slds-form-element slds-p-around_small">
+            <label class="slds-checkbox_toggle slds-grid">
+            <span class="slds-form-element__label slds-m-bottom_none">Show Child</span>
+            <input type="checkbox" name="checkbox-toggle-15" onchange={handleCheckboxChange} value="checkbox-toggle-15" aria-describedby="checkbox-toggle-15" />
+            <span id="checkbox-toggle-15" class="slds-checkbox_faux_container">
+            <span class="slds-checkbox_faux"></span>
+            <span class="slds-checkbox_on">Enabled</span>
+            <span class="slds-checkbox_off">Disabled</span>
+            </span>
+            </label>
+            </div>
+        <template lwc:if={show}>
+            <h1>Parent Checkbox Clicked</h1>
+           <!--<c-life-cycle-hook-child-cmp message={message}
+        ></c-life-cycle-hook-child-cmp> -->
+        </template>
+    </lightning-card>  
+</template>

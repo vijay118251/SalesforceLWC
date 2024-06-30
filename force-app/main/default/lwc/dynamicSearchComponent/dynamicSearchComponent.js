@@ -58,7 +58,7 @@ export default class DynamicSearchComponent extends NavigationMixin(LightningEle
     }
 
     handleRowAction(event) {
-        console.log(JSON.stringify(event));
+        console.log(JSON.parse(JSON.stringify(event)));
         const actionName = event.detail.action.name;
         const row = event.detail.row;
 

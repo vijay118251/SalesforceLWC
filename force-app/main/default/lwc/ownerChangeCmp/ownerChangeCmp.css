@@ -1,0 +1,21 @@
+/* Component-level CSS */
+:host {
+    --lwc-paletteBlack: #131314; /* Define the custom property */
+    --lwc-paletteRed: #ab0505;
+}
+
+.my-css {
+    --slds-c-button-brand-color-background: var(--lwc-paletteBlack);
+  }
+
+.my-button {
+    background-color: var(--lwc-paletteBlack);
+}
+
+.cls-button {
+    --slds-c-button-brand-color-border: var(--lwc-paletteRed);
+}
+
+.my-theme {
+    margin: 1rem;
+}

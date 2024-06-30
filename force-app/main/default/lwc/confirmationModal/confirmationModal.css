@@ -1,0 +1,13 @@
+/* Component-level CSS */
+:host {
+    --lwc-paletteBlack: #131314;
+    --lwc-paletteOrange: #ee4d08;
+}
+
+.my-button {
+    background-color: var(--lwc-paletteBlack);
+}
+
+.my-header {
+    --slds-c-modal-header-color-background: var(--lwc-paletteOrange)
+}

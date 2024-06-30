@@ -1,0 +1,112 @@
+<template>
+    <lightning-card title="Change Owner Records" variant="Narrow" icon-name="standard:team_member">
+        <div class="slds-p-around_medium">
+            
+        <!--Display User Records-->
+        <lightning-record-picker
+            lwc:ref="recordPicker"
+            data-custom="targetSelector"
+            object-api-name={objectApiName}
+            placeholder="Get User Records"
+            label="Search Users"
+            filter={filter}
+            onchange={handleTargetedUser}
+            required
+        ></lightning-record-picker>
+        
+        <div class="slds-p-around_medium">
+        <!--Display SObject Records-->
+        <lightning-combobox
+            name="progress"
+            data-custom="targetSelector"
+            label="Select a target sObject"
+            value={selectedObjectId}
+            placeholder="Select SObject Records"
+            options={options}
+            onchange={handleTargetedObject}
+            required >
+        </lightning-combobox>
+
+         <!--Display Selected Records-->
+        <p class="slds-p-top_small">
+            <strong> Selected Record is: {selectedObjectId}</strong>
+        </p>
+        </div>
+        </div>
+        <div class="slds-box slds-theme_shade slds-p-around_small my-theme">
+            <div class="slds-text-align_center"> <strong> Transfered Records</strong></div>
+            <h1 class="slds-text-color_success">Success Records: {successCount}</h1>
+            <h1 class="slds-text-color_error">Failed Records: {failureCount}</h1>
+        </div>
+         <!--Display Button-->
+        <lightning-button 
+            class="my-css" 
+            label="Get Records" 
+            variant="brand" 
+            slot="footer"
+            onclick={handleClick}>
+        </lightning-button>
+        <template lwc:if={showModal}>
+            <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close" class="slds-modal__close" title="Settings"
+                        icon-class="slds-button_icon-inverse" onclick={closeModal}
+                    >
+                    </lightning-button-icon>
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Change Owner Records</h1>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="slds-p-around_medium">
+                        <!--Display User Records-->
+                        <lightning-input 
+                            type="text" 
+                            label="Selected User Record"
+                            value={userName}
+                            disabled
+                        ></lightning-input>
+                         <!--Display Total Records-->
+                    <p>
+                        <strong> Total Records: {recordCount}</strong>
+                    </p>
+                    </div>
+
+                     <!--Search New  User Records-->
+                    <lightning-record-picker
+                        object-api-name={objectApiName}
+                        placeholder="Search Users"
+                        label="Transfer to User"
+                        filter={filter}
+                        onchange={handleTransferUser}
+                    >
+                    </lightning-record-picker>
+                    <p>
+                        <strong> Selected User Id: {newUserId}</strong>
+                    </p>
+                    </div>
+                <div class="slds-modal__footer">
+                <button class="slds-button slds-button_brand my-button" aria-label="Cancel and close" onclick={closeModal}>Close</button>
+                <button class="slds-button slds-button_brand my-button" onclick={changeOwnerHandler}>Change Owner</button>
+                </div>
+                </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+        </template>
+    </lightning-card>
+    <template lwc:if={showChildModal}>
+            <c-confirmation-modal 
+                is-confirm={showChildModal}
+                onmodalevent={handleModalEvent}
+            >
+                <span slot="title">Confirmation</span>
+                <span slot="body">Are you sure to transfer records? </span>
+                <span slot="leftButton">Cancel</span>
+                <span slot="rightButton">Yes</span>
+            </c-confirmation-modal>
+    </template>
+    <template lwc:if={isBatchRunning}>
+        <div class="exampleHolder">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template>
+</template>
