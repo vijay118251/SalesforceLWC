@@ -1,0 +1,14 @@
+<template>
+    <h2> Record Id is {recordId} </h2>
+
+    <lightning-card  title="Accounts">
+        <ul class="slds-m-around_medium">
+            <template for:each={contacts} for:item="contact">
+                <li key = {contact.Id}>
+                    {contact.Name}
+                </li>
+            </template>
+        </ul>
+    </lightning-card>
+
+</template>

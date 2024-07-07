@@ -1,0 +1,11 @@
+<template>
+    <h2> VehicleInterests Datatable</h2>
+    <template if:true={vhList}>
+        <lightning-datatable data={vhList} columns={columns} key-field="Id" max-row-selection="1"
+                selected-rows={selectedRows}>          
+        </lightning-datatable>
+    </template>
+    <template if:true={error}>
+        {error}
+    </template>
+</template>

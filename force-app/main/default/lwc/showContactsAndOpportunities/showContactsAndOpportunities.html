@@ -1,0 +1,17 @@
+<template>
+
+    <lightning-card  variant="Narrow"  title="child cmp" icon-name="standard:account">
+        <p> Selected Value is: {selectedValue} </p>
+        
+
+        <template lwc:if={contact} for:each={contacts} for:item="contact">
+			    <p key = {contact.Id}> {contact.Name}</p>
+		</template>
+        <template lwc:if={opportunity} for:each={opportunities} for:item="opportunity">
+                <li key = {opportunity.Id}>
+                    {opportunity.Name} - {opportunity.StageName} - {opportunity.AccountId}
+                </li>
+        </template>
+    </lightning-card>
+
+</template>

@@ -1,0 +1,30 @@
+<template>
+    <lightning-card  variant="Narrow"  title="lightning-record-form example">
+        <lightning-record-form object-api-name={objectApiName} 
+                               record-id={recordId} 
+                               fields={fields}> </lightning-record-form>
+    </lightning-card>
+
+    <br>
+
+    <lightning-card  variant="Narrow"  title="lightning-record-edit-form example">
+        <lightning-record-edit-form object-api-name={objectApiName}
+                                    record-id={recordId}>
+            <lightning-input-field field-name={nameField}> </lightning-input-field>
+            <lightning-input-field field-name={ratingField}> </lightning-input-field>
+            <div class='slds-align_absolute-center'>
+                <lightning-button variant="brand" label="Save" type="submit"></lightning-button>
+            </div>
+        </lightning-record-edit-form>
+    </lightning-card>
+
+    <br>
+
+    <lightning-card  variant="Narrow"  title="record-view-form example">
+        <lightning-record-view-form object-api-name={objectApiName}
+                                    record-id={recordId}>
+            <lightning-output-field field-name={nameField}></lightning-output-field>
+            <lightning-output-field field-name={ratingField}></lightning-output-field>
+        </lightning-record-view-form>
+    </lightning-card>
+</template>

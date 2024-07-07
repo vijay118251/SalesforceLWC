@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-p-horizontal_small">
+        <lightning-button label="Get Contacts" variant="brand" onclick={handleClick}></lightning-button>
+    </div>
+    <br>
+    <template lwc:if={showContacts}>
+        <lightning-card  title="Associated Contacts">
+            <ul class="slds-m-around_medium">
+                <template for:each={contacts} for:item="contact">
+                    <li key = {contact.Id}>
+                        {contact.Id} - {contact.Name} - {contact.Birthdate }
+                    </li>
+                </template>
+            </ul>
+        </lightning-card>
+    </template>
+</template>

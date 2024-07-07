@@ -1,0 +1,28 @@
+<template>
+    <lightning-card  title="TestDataBinding">
+		<p class="slds-var-p-horizontal_small">
+			<lightning-input label = "Name" onchange={handleChanges}></lightning-input>
+		</p>
+        <p class="slds-var-p-horizontal_small">
+			<lightning-input value = {name}></lightning-input>
+		</p>
+        <br>
+        <template if:true={showText}>
+            <div slot="footer">
+			    <lightning-badge label={greeting}> </lightning-badge>
+		    </div>
+        </template>
+        <lightning-button variant="success" label="Click Me" title="Successful action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>		
+        
+    </lightning-card>
+
+    <lightning-card  title="Associated Opportunities">
+        <ul class="slds-m-around_medium">
+            <template for:each={opportunities.data} for:item="opportunity">
+                <li key = {opportunity.Id}>
+                    {opportunity.Name} - {opportunity.StageName} - {opportunity.AccountId}
+                </li>
+            </template>
+        </ul>
+    </lightning-card>
+</template>

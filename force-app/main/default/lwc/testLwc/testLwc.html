@@ -1,0 +1,12 @@
+<template>
+	<lightning-card  title="CalcTest">
+		<p class="slds-var-p-horizontal_small">
+			<lightning-input value={firstNumber} name = "fnumber"  label = "First Number" onchange={handleChanger}></lightning-input>
+			<lightning-input value={secondNumber} name = "snumber"  label = "Second Number" onchange={handleChanger}></lightning-input>
+		</p>		
+		<div slot="footer">
+			<!-- <lightning-badge label={result}></lightning-badge> -->
+			<c-result-cmp res = {result}> </c-result-cmp>
+		</div>
+	</lightning-card>
+</template>

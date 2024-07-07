@@ -1,0 +1,16 @@
+<template>
+    <lightning-card  title="Name Publisher" >
+        <lightning-input type="text" name="name" label="Name" placeholder="type your name here..." onchange={handleChange}></lightning-input>
+        <lightning-button label="publish" onclick={handleClick}></lightning-button>
+    </lightning-card> 
+
+    <lightning-card  title="Accounts">
+        <ul class="slds-m-around_medium">
+            <template for:each={accounts.data} for:item="account">
+                <li key = {account.Id}>
+                    <a data-id = {account.Id} onclick={navigateToAccount}> {account.Name} </a>
+                </li>
+            </template>
+        </ul>
+    </lightning-card>
+</template>

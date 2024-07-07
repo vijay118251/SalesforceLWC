@@ -1,0 +1,19 @@
+<template >
+    <template lwc:if={show}>
+    <lightning-card title="Students From Parent">
+        <template for:each={students} for:item="student">            
+                <p class="slds-p-horizontal_small" key = {student.Id}> {student.Name}, {student.Id}</p>
+        </template>
+    </lightning-card>
+    </template>
+
+
+    <br>
+    <template lwc:if={showMinors}>
+    <lightning-card title="Minors">
+        <template for:each={minors} for:item="minor">            
+                <p class="slds-p-horizontal_small" key = {minor.Id}> {minor.Name}, {minor.Id}, {minor.Age}</p>
+        </template>
+    </lightning-card>
+    </template>
+</template>

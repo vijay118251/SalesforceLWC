@@ -1,0 +1,14 @@
+<template>
+    <template lwc:if={loaded}>
+        <div class="slds-m-top_small slds-m-bottom_medium">
+            <lightning-button variant="brand" label="Show" onclick={handleClick} class="slds-m-left_x-small">
+            </lightning-button>
+        </div>
+    </template>
+    <template lwc:if={showChild2}>
+        <c-redux-comp1></c-redux-comp1>
+    </template>
+    <template lwc:if={showChild2}>
+        <c-redux-comp2></c-redux-comp2>
+    </template>
+</template>

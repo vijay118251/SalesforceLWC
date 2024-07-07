@@ -1,0 +1,9 @@
+<template>
+    <h1> Parent Component </h1>
+    <lightning-input type="text"  label="Name" onchange={handleName} value={Name}></lightning-input>
+    <br>
+    <c-child-component name = {Name}> </c-child-component>
+    <div class="slds-p-around_medium lgc-bg" style="text-align: end;">
+    <lightning-button variant="brand" label="Call Child" title="Call Child" onclick={callChildMethod} class="slds-m-left_x-small"></lightning-button>
+    </div>
+</template>

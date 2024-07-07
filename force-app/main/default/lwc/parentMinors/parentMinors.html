@@ -1,0 +1,24 @@
+<template>
+    <lightning-card  title="Parent">
+            <!-- <lightning-button label="Show Minors" slot="actions"></lightning-button> -->
+            <c-child-students ongetstudents = {getStudents}></c-child-students>
+            <template lwc:if={hide}>
+                <lightning-card title="Students From Child">
+        
+                <template for:each={students} for:item="student">            
+                        <p class="slds-p-horizontal_small" key = {student.Id}> {student.Name}, {student.Id}</p>
+                </template>
+                </lightning-card>
+            </template>
+            <c-child-minors onminorsdata = {getMinors}></c-child-minors>
+            <template lwc:if={show}>
+                <lightning-card title="Minors From Child">
+        
+                <template for:each={minors} for:item="minor">            
+                        <p class="slds-p-horizontal_small" key = {minor.Id}> {minor.Name}, {minor.Id}</p>
+                </template>
+                </lightning-card>
+            </template>  
+    </lightning-card>
+
+</template>

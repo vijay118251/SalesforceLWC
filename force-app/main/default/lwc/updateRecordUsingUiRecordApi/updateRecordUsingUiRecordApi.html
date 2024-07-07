@@ -1,0 +1,23 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Update Account" icon-name="standard:account">
+        <div class="slds-var-p-horizontal_small">
+            <lightning-input name="name" 
+                             label="Account Name"
+                             class="nameCmp"
+                             value={name}
+                             onchange={handleChange}>
+            </lightning-input>
+            <lightning-input name="rating" 
+                             label="Rating"
+                             class="ratingCmp"
+                             value={rating}
+                             onchange={handleChange}>
+            </lightning-input>
+            <br>
+            <lightning-button variant="brand" 
+                              label="Update Account" 
+                              onclick={handleClick}>  
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

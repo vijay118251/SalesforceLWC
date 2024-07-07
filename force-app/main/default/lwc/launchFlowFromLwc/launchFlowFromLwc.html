@@ -1,9 +1,8 @@
 <template>
-     <!-- Invoke a Screen flow in LWC -->
-     <lightning-flow
-     flow-api-name={flowApiName}
-     flow-input-variables={flowInputVariables}
-     onstatuschange={handleFlowStatusChange}
- >
- </lightning-flow>
+    <lightning-flow if:true={singleAccount}
+                    flow-api-name='launchFlowFromLwcV2'
+                    flow-input-variables={inputVariables}
+                    onstatuschange={handleStatusChange}>
+
+    </lightning-flow>
 </template>

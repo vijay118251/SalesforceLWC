@@ -1,0 +1,12 @@
+<template>
+    
+    <lightning-card  variant="Narrow"  title="Parent Contact Component" icon-name="standard:account">
+        <c-child-contact-component id-from-parent = {recordId} onsendcontactsevent={handleContacts}>
+            
+        </c-child-contact-component>
+        <template for:each={contacts} for:item="contact">
+			    <p key = {contact.Id}> {contact.Name}</p>
+		</template>
+    </lightning-card>
+
+</template>

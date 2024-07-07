@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Name And Phone Fields">
+        <template if:true={record.data}>
+            <div>
+                <lightning-formatted-text value={phone}></lightning-formatted-text>
+                <p> {name} </p>
+            </div> 
+        </template>    
+    </lightning-card>
+</template>
