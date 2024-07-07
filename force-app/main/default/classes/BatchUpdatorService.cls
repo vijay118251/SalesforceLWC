@@ -45,6 +45,6 @@ public class BatchUpdatorService implements Database.Batchable<sObject>, Databas
     public void finish(Database.BatchableContext BC) {
         System.debug('Number of successful records: ' + successCount);
         System.debug('Number of failed records: ' + failureCount);
-        SObjectController.processRecordCount(successCount,failureCount);
+       SObjectController.processRecordCount(successCount,failureCount);
     }
 }
