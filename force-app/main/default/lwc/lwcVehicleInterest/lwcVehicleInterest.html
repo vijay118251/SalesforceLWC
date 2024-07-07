@@ -1,0 +1,32 @@
+<template>
+<lightning-card title={componentLabel} icon-name="custom:custom31">
+<lightning-tabset>
+    <lightning-tab label=" Vehicle History">
+        <div class="slds-var-m-around_medium">
+            <template if:true={displayDetails}>
+                <template if:true={vehicleList}>
+                    <template for:each={vehicleList} for:item="vhc">
+                <div key={vhc.Id} class="slds-grid sld-wrap slds-p-around_small">
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_medium"><b>Vehicle Name:</b>
+                        <p>{vhc.Name}</p>  
+                    </div>
+                    <div class="slds-col slds-size_2-of-2 slds-p-around_medium"><b>Car Status:</b>
+                        <p>{vhc.carStatus__c}</p>  
+                    </div>
+                </div>
+                <div key={vhc.Id}  class="slds-grid sld-wrap slds-p-around_small">
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_medium"><b>Car Model:</b>
+                        <p>{vhc.Model__c}</p>  
+                    </div>
+                    <div class="slds-col slds-size_2-of-2 slds-p-around_medium"><b>Car Type:</b>
+                        <p>{vhc.Type__c}</p>  
+                    </div>
+                </div>
+                    </template>
+                </template>
+            </template>
+        </div>
+    </lightning-tab>
+</lightning-tabset>
+</lightning-card>
+</template>

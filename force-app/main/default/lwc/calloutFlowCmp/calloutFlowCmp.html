@@ -1,0 +1,20 @@
+<template>
+<lightning-card title="Laptop Details" icon-name="custom:custom63">
+    <div class="slds-align_absolute-center">
+    <template lwc:if={showButton}>
+        <lightning-button label="Create New Laptop" name="User" onclick={handleClick} class="slds-m-left_x-small">
+        </lightning-button>
+    </template>
+    </div>
+    <template lwc:if={clickedButton}>
+        <div class="slds-clearfix">
+            <div class="slds-float_right">
+                <lightning-button label="Close Details" name="Close" onclick={handleClick} class="slds-m-right_small">
+                </lightning-button>
+            </div>
+        </div>
+        <lightning-flow flow-api-name='Resful_Post_Callout'>
+        </lightning-flow>
+    </template>
+    </lightning-card>
+</template>

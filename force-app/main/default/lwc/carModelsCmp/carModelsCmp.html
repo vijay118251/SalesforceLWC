@@ -1,0 +1,90 @@
+<template>
+    <lightning-card  variant="Narrow">
+        <div class="car-app"> 
+        <img src={logo} alt="BMW Icon" style="position:absolute;top:2rem;left:1rem;">
+        <div style="position:absolute;top:20rem;left:11rem;" class="slds-button slds-button_brand slds-button_large">
+        <lightning-button   variant="brand"
+                            label="Book Now"
+                            ></lightning-button>
+        </div>
+        </div>
+        <h1 class="slds-text-heading_large slds-p-around_x-small"> FIND YOUR BWM. </h1>
+        <h2 class="slds-text-heading_medium slds-text-color_weak slds-p-around_x-small"> FILTER </h2>
+        <lightning-accordion allow-multiple-sections-open>
+        <lightning-accordion-section name="A" label="Show more filters">
+            <lightning-checkbox-group name="Body Type"
+                              label="Body Type"
+                              options={bodyType}
+                              value={bodyValue}
+                              onchange={handleChange}></lightning-checkbox-group><br/>
+            <lightning-checkbox-group name="Fuel Type"
+                              label="Fuel Type"
+                              options={fuelType}
+                              value={fuelValue}
+                              onchange={handleChange}></lightning-checkbox-group><br/>
+            <lightning-button  variant="brand"
+                               label="See Results" 
+                               title="Result" 
+                               class="slds-m-left_x-small"></lightning-button>
+            <lightning-button  variant="destructive" 
+                               label="Reset all" 
+                               title="Reset" 
+                               icon-name="utility:delete"
+                               class="slds-m-left_x-small"
+                               onclick={resetMethod}></lightning-button>
+        </lightning-accordion-section>
+        </lightning-accordion>
+        <lightning-tabset>
+        <lightning-tab label="All Models">
+                <fieldset class="slds-form-element">
+                <div class="slds-form-element__legend slds-form-element__control slds-p-around_small">
+                <template for:each={carModels} for:item="carModel">
+                    <template lwc:if={showCar}>
+                <div
+                            key={carModel.Id}
+                            data-label={carModel.MasterLabel}
+                            onclick={handleOnIconClick}
+                            class="slds-visual-picker slds-visual-picker_small"
+                        >
+                <input type="radio" id={carModel.Id} value={carModel.Id} name="example-unique-name-35" />
+                <label for={carModel.Id}>
+                <span class="slds-visual-picker__figure slds-align_absolute-center">
+                <span class="slds-is-selected">
+                <span class="slds-icon_container">
+                    <!--image display-->
+                        <img
+                            src={carModel.source}
+                            alt="Car Logo"
+                            width="300"
+                            height="300"
+                            class="image"
+                        />
+                </span>
+                </span>
+                <span class="slds-is-not-selected">
+                <span class="slds-icon_container">
+                        <!--image display-->
+                        <img
+                            src={carModel.source}
+                            alt="Car Logo"
+                            width="300"
+                            height="300"
+                            class="image"
+                        />
+                </span>
+                </span>
+                </span>
+                <span class="slds-visual-picker__body">
+                <span class="slds-text-title">{carModel.carName__c}</span>
+                <span class="slds-text-title">Price: ₹{carModel.Price__c}</span>
+                </span>
+                </label>
+                </div>
+                </template>
+                </template>
+                </div>
+                </fieldset>   
+        </lightning-tab>
+        </lightning-tabset>
+    </lightning-card>
+</template>

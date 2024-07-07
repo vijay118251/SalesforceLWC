@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Lead Datatable" icon-name="custom:custom63">
+    <div class="slds-m-around_medium">
+    <div style="height: 300px;">
+        <lightning-datatable
+                key-field="Id"
+                show-row-number-column  
+                data={data}
+                columns={columns}
+        >
+        </lightning-datatable>
+    </div>
+    </div>
+    <div class="slds-var-m-around_medium">
+        <lightning-input label="Name" name="input1" onchange={changeHandler}></lightning-input>
+    </div>
+    <div class="slds-var-m-around_medium">
+        <lightning-input label="Annual Revenue" name="input2" onchange={changeHandler}></lightning-input>
+    </div>
+    <div class="slds-m-around_medium">
+    <!-- Neutral variant (default) -->
+        <lightning-button label="Find Lead" name="Add" onclick={handleClick} class="slds-align_absolute-center" variant="Destructive">
+        </lightning-button>
+    </div>
+    </lightning-card>
+</template>

@@ -19,4 +19,23 @@ public class VehicleUpdatePhone {
         system.debug('vhList-->'+vhList);
     }
     
+    // update phone field
+    public static void updateWebsite(String webName) {
+        List<Account> accList = [SELECT Id, Name, Type, Phone, Website,(SELECT Id, Name,Phone__c,Type__c,Customer__c,accountWebsite__c
+                                          FROM vehicleInterests__r) 
+                                 FROM Account WHERE Name='Vehicle Account1'];
+        List<vehicleInterest__c> vhList = new List<vehicleInterest__c>();
+        system.debug('ACC'+accList);
+        for(Account acc:accList) {
+            for(vehicleInterest__c vhRec:acc.vehicleInterests__r) {
+                acc.Website=webName;
+                vhRec.accountWebsite__c= acc.Website;
+                vhList.add(vhRec);
+                system.debug('VH'+vhRec);
+            }
+        }
+        update accList;
+        update vhList;
+    }
+    
 }

@@ -1,0 +1,95 @@
+.calendar {
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    gap: 1rem;
+    flex-direction:column ;
+    width: fit-content;
+}
+
+lightning-combobox{
+    text-align: center;
+}
+.controls{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.month {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.weekdays {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.days {
+    width: fit-content;
+/*     background-color: pink;
+ */    display: flex;
+    flex-direction: column;
+}
+.days-alphabet{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.days-alphabet h1{
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.calendar-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 10px;
+    gap: 1rem;
+    width: fit-content;
+    background-color: #ffeed7;
+ }
+.week {
+/*     background-color: aqua;
+ */    display: flex;
+    flex-direction: row;
+}
+
+.days div {  
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    margin:5px;
+    font-weight: bold;
+}
+
+.days div:first-child{
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+.present {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.absent {
+    background-color: #FF5733;
+    color: #fff;
+}
+
+.blank {
+    background-color: #ccc;
+    color: #fff;
+}

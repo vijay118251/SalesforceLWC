@@ -1,0 +1,32 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Account Data" icon-name="standard:account">
+        <div class="slds-var-m-around_medium">
+            <c-child-account-cmp
+                onchildevent={handleEvent}
+                onchildcontactevent={handleContactEvent}
+            >
+            </c-child-account-cmp>
+        </div>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-align_absolute-center">
+                <template lwc:if={show}>
+                    Name: {accList.Name.value}
+                    Phone: {accList.Phone.value}
+                    Rating: {accList.Rating.value}
+                </template>
+            </div>
+        </div>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-align_absolute-center">
+                <template lwc:if={showContact}>
+                    <template for:each={conList} for:item="con">
+                        <p key={con.Id}>
+                            First Name: {con.FirstName}
+                            Last name: {con.LastName} 
+                            Email: {con.Email}</p>
+                    </template>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

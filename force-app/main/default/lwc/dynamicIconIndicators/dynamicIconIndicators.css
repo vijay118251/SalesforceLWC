@@ -1,0 +1,12 @@
+/*css for icon title and subttilte */
+.wrapText {
+    white-space: pre-line;
+    text-align: center;
+    position: relative;
+    top: 4px;
+    width: 75px;
+}
+
+.aligntext {
+    justify-content: center;
+}

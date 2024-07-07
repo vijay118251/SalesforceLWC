@@ -1,0 +1,24 @@
+<!--
+  @description : This component shows the message when current record changes.
+  @author      : Vijay M
+-->
+<template>
+    <lightning-card title="Change Data Capture with EmpApi" icon-name="custom:custom14">
+        <template if:true = {isDisplayMsg}>
+        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert">
+            <span class="slds-assistive-text">warning</span>
+            <lightning-icon icon-name="utility:warning" alternative-text="Warning!" title="Warning">                
+            </lightning-icon>
+            <h2>{responseMessage} &nbsp;
+              <lightning-button-icon 
+                    icon-name="utility:refresh"  
+                    variant="bare" 
+                    alternative-text="refresh" 
+                    title="refresh"
+                    onclick={handleRefresh}>
+                </lightning-button-icon>
+            </h2>            
+          </div>
+        </template>
+    </lightning-card>
+</template>

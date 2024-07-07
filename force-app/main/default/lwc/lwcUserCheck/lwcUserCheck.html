@@ -1,0 +1,13 @@
+<template>
+<lightning-card  variant="Narrow"  title="User Check" icon-name="custom:custom14">
+     <lightning-button
+        variant="brand"
+        label="Get User Name"
+        onclick={handleClick}
+        class="slds-align_absolute-center"
+    ></lightning-button>
+    <template lwc:if={clicked}>
+    <h1 class="slds-p-horizontal_small">{userName}</h1>
+    </template>
+</lightning-card>
+</template>

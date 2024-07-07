@@ -53,6 +53,8 @@ public with sharing class VehicleElementController {
             try {
                 final VehicleSelector selector = new VehicleSelector();
                 selector.setEnforceSecurity(true);
+                selector.setStripInaccessible(false);
+                selector.setOrderBy('LastModifiedDate DESC');
                 List<vehicleInterest__c> vhcList = selector.dynamicQuery(new Set<Id>{accId});
                 if(!vhcList.isEmpty()) {
                     vhWrap.details=vhcList;                

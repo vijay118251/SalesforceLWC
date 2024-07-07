@@ -1,0 +1,31 @@
+<!-- @Component: dynamicIconIndicators-->
+<!--template-->
+<template>
+    <template if:true={isShowContainer}>
+        <div class="slds-card">
+            <div class="slds-grid slds-gutters slds-grid_align-spread slds-var-p-around_small aligntext">
+                <template for:each={iconDetails} for:item="metaProperty">
+                    <template if:true={metaProperty}>
+                        <lightning-layout-item key={metaProperty.Id}>
+                            <div class="slds-col col-centered">
+                                <div class="slds-align_absolute-center align">
+                                    <!--display icon-->
+                                    <lightning-icon
+                                    name={metaProperty.Id}
+                                    icon-name={metaProperty.icon__c}
+                                    variant="inverse"
+                                    title={metaProperty.hoverText__c}
+                                    size="large"
+                                    onclick={handleOnIconClick} >
+                                </lightning-icon>
+                                </div>
+                                <p class="wrapText">{metaProperty.title__c}</p>
+                                <p class="wrapText">{metaProperty.subtitle__c}</p>
+                            </div>
+                        </lightning-layout-item>
+                    </template>
+                </template>
+            </div>
+        </div>
+    </template>
+</template>

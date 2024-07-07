@@ -10,7 +10,6 @@ public class MetadataIconController {
     public PlanType planType;
     /*enum plan type*/
     public enum PlanType {DRIVE,WELLNESS}
-    
     /*setPlanType*/
     public MetadataIconController setPlanType(planType type) {
         this.planType = type;

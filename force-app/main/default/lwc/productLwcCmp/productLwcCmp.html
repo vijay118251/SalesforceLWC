@@ -1,0 +1,27 @@
+<template>  
+    <div class="slds-notify slds-notify_alert slds-alert_offline" role="alert">
+        <h1><b>{title}</b></h1>
+    </div>
+    <article class="slds-card">
+        <div class="slds-p-around_medium">
+            <template if:true={filteredProducts}>
+            <div class="slds-grid sld-wrap slds-p-around_small">
+                <div class="slds-col slds-size_6-of-12 slds-p-around_medium"><b>Name:</b>
+                    <p>{filteredProducts.name}</p>  
+                </div>
+                <div class="slds-col slds-size_6-of-12 slds-p-around_medium"><b>Color:</b>
+                    <p>{filteredProducts.data.color}</p>  
+                </div>
+            </div>
+            <div class="slds-grid sld-wrap slds-p-around_small">
+                <div class="slds-col slds-size_6-of-12 slds-p-around_medium"><b>Storage:</b>
+                    <p>{filteredProducts.storage}</p>  
+                </div>
+                <div class="slds-col slds-size_6-of-12 slds-p-around_medium"><b>Cost:</b>
+                    <p>{filteredProducts.cost}</p>  
+                </div>
+            </div>
+            </template>
+        </div>
+    </article> 
+</template>

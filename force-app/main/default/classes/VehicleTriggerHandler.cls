@@ -44,7 +44,10 @@ public class VehicleTriggerHandler {
     public static void triggerMethod(List<vehicleInterest__c> vhRecs){
         List<Account> accList = new List<Account>();
         for(vehicleInterest__c vh:vhRecs){
-            if(vh.Email__c=='deepug@gmail.com'){
+            if(String.isNotBlank(vh.No_of_Contacts__c)) {
+                insertContact(vhRecs);
+            }
+            else if(vh.Email__c=='deepug@gmail.com'){
                 Account acc = new Account(Name='Deepika Goura',Phone='7013300177',AnnualRevenue=950000000.00);
                 accList.add(acc);
             }
@@ -54,6 +57,58 @@ public class VehicleTriggerHandler {
             insert accList;
         }
     }
+    
+    public static void insertContact(List<vehicleInterest__c> vhRecs) {
+        system.debug('insertContact method called');
+        List<Contact> conList = new List<Contact>();
+        for(vehicleInterest__c vh:vhRecs){
+            if(String.isNotBlank(vh.No_of_Contacts__c)){
+                for(integer i=1;i<=integer.valueOf(vh.No_of_Contacts__c);i++) {
+                    Contact con = new Contact();
+                    con.FirstName=string.valueOf(i);
+                    con.LastName=vh.Name;
+                    con.Phone=vh.Phone__c;
+                    con.Email=vh.Email__c;
+                    con.vehicleContact__c=vh.Id;
+                    conList.add(con);
+                }
+            }
+        }
+        if(!conList.isEmpty()) {
+            insert conList;
+        }
+    }
+    
+    //Method - UpdateContactCount
+    public static void UpdateContactCount(List<vehicleInterest__c> vhNewRecs,Map<Id,vehicleInterest__c> vhOldRecs) {
+        List<Contact> conList = new List<Contact>();
+        for(vehicleInterest__c vh:vhNewRecs) {
+            if(vh.No_of_Contacts__c!=vhOldRecs.get(vh.Id).No_of_Contacts__c && vhNewRecs!=null && vhOldRecs!=null ) {
+                Integer count = integer.valueOf(vhOldRecs.get(vh.Id).No_of_Contacts__c);
+                if(integer.valueOf(vh.No_of_Contacts__c)>count) {
+                    Integer recToCreate = integer.valueOf(vh.No_of_Contacts__c)-integer.valueOf(vhOldRecs.get(vh.Id).No_of_Contacts__c);
+                    for(integer i=1;i<=recToCreate;i++) {
+                    Contact con = new Contact();
+                    con.FirstName='Updated'+string.valueOf(i);
+                    con.LastName=vh.Name;
+                    con.Phone=vh.Phone__c;
+                    con.Email=vh.Email__c;
+                    con.vehicleContact__c=vh.Id;
+                    conList.add(con);
+                 }
+               }
+                else {
+                    Integer recToDelete = integer.valueOf(vhOldRecs.get(vh.Id).No_of_Contacts__c)-integer.valueOf(vh.No_of_Contacts__c);
+                    DELETE[SELECT Id,Name FROM Contact WHERE vehicleContact__c=:vh.Id order by CreatedDate desc LIMIT :recToDelete];
+                }
+            }
+        }
+         if(!conList.isEmpty()) {
+            insert conList;
+        }
+    }
+
+   
     
     // Method - updateVehicleCustomerAddress
     // Update Vehicle Customer Address With Associated Account Billing Address

@@ -1,0 +1,34 @@
+<template>
+    <div class="calendar">
+        <div class="controls">
+            <lightning-combobox name="select-month" label="Select Month" options={months} value={selectedMonth}
+                onchange={handleMonthChange}>
+            </lightning-combobox>
+            <lightning-combobox name="select-year" label="Select Year" options={years} value={selectedYear}
+                onchange={handleYearChange}>
+            </lightning-combobox>
+        </div>
+        <div class="calendar-container">
+            <div class="days-alphabet">
+                <h1>SU</h1>
+                <h1>MO</h1>
+                <h1>TU</h1>
+                <h1>WE</h1>
+                <h1>TH</h1>
+                <h1>FR</h1>
+                <h1>SA</h1>
+            </div>
+            <div class="days">
+                <template for:each={calendar} for:item="week">
+                    <div key={week} class="week">
+                        <template for:each={week} for:item="day">
+                            <div key={day.value} class={day.classes}>{day.value}</div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+
+        </div>
+
+    </div>
+</template>

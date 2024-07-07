@@ -1,0 +1,21 @@
+<template>
+    <lightning-card>
+        <template lwc:if={result}>
+            <div class="slds-card">
+                <div class="slds-p-around_medium">My Component is {result}</div>
+            </div>
+        </template>
+        <template lwc:else>
+            <div class="slds-card">
+                <div class="slds-p-around_medium">My Component is {error}</div>
+            </div>
+        </template>
+          
+        <lightning-button name= "Success" variant="success" label="Resolve" 
+        title="Destructive action" onclick={handleClick} class="slds-p-left_medium" ></lightning-button>
+
+        <lightning-button name= "Fail" variant="destructive" label="Reject" title="Successful action" 
+            onclick={handleClick} class="slds-p-left_medium"></lightning-button>   
+            
+    </lightning-card>
+</template>

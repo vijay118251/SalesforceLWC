@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Dual Data Tables">
+        <!-- First Data Table -->
+        <lightning-datatable
+            key-field="Id"
+            data={accountData}
+            columns={accountColumns}
+            onrowselection={handleRowSelection}
+            selected-rows={selectedRows}
+        ></lightning-datatable>
+
+        <!-- Second Data Table -->
+        <lightning-datatable
+            key-field="Id"
+            data={selectedAccountData}
+            columns={accountColumns}
+        ></lightning-datatable>
+    </lightning-card>
+</template>

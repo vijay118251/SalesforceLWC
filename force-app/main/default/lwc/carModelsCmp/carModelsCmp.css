@@ -1,0 +1,6 @@
+.car-app{
+    min-height: 70vh;
+    background-image: url(/sfsites/c/resource/bmwBackGround);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }

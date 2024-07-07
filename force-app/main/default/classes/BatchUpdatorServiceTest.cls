@@ -20,7 +20,7 @@ public with sharing class BatchUpdatorServiceTest {
         // Insert the user record
         insert oldUser;
         Account acc= new Account( Name='Infosys Limited', Type='Customer - Channel', Phone='8778975002',
-                                 Rating='Hot', AnnualRevenue=95000000000.00,OwnerId = oldUser.Id);
+                                 Rating='Hot', AnnualRevenue=95000000000.00, Active__c='Yes',OwnerId = oldUser.Id);
         insert acc;
         // Create a new user record
          User newUser = new User(

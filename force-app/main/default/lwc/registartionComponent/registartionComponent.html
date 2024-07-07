@@ -1,0 +1,16 @@
+<!-- registrationForm.html -->
+<template>
+    <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+        <lightning-tabset>
+        <lightning-tab label="Tab 1">
+            <!-- UI elements for Tab 1, including age input -->
+            <lightning-input type="number" label="Age" value={age}></lightning-input>
+        </lightning-tab>
+        <lightning-tab label="Tab 2">
+            <!-- UI elements for Tab 2, including occupation dropdown -->
+            <lightning-combobox label="Occupation" options={occupationOptions} value={selectedOccupation} onchange={handleOccupationChange}></lightning-combobox>
+        </lightning-tab>
+    </lightning-tabset>
+    <lightning-button label="Submit" onclick={handleSubmit}></lightning-button>
+    </lightning-card>
+</template>

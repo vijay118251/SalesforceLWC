@@ -84,7 +84,7 @@ public with sharing class AccountSelector {
     }
 
     /*selectFromMethod*/
-    public Account selectFromMethod(Set<Id> accountID) {
+    public Account selectFromMethod(Set<Id> accountId) {
         Account acc = new Account();
         final string wher = 'Id IN :accountId';
         final String execQuery = generateQueryString(getFieldList(), wher, this.orderBy, this.enforceSecurity);

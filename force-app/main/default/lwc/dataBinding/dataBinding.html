@@ -1,0 +1,22 @@
+<template>
+        <template if:true={showDetails}>
+        <lightning-card  variant="Narrow"  title="Sonu" icon-name="custom:custom31">
+        <h3 class="slds-align_absolute-center"> Hello {firstName} {lastName}! </h3>
+        <div class="slds-p-around_medium">
+            <lightning-input type="text" value={firstName} variant="standard" name="fname" label="First Name" onchange={enableButton} placeholder="type here...">
+        </lightning-input>
+        </div>
+        <div class="slds-p-around_medium">
+           <lightning-input type="text" value={lastName} variant="standard" name="lname" label="Last Name" onchange={enableButton} placeholder="type here...">
+        </lightning-input> 
+        </div>
+        <div class="slds-align_absolute-center">
+            <lightning-button variant="brand" label="Click Me" onclick={handleClick} disabled={disabled}></lightning-button>
+        </div>
+         <p slot="footer">{footerName}</p>
+         </lightning-card>
+        </template>
+        <div class="slds-align_absolute-center">
+            <h3 class="slds-p-around_medium">{passChild}</h3>
+        </div>
+</template>

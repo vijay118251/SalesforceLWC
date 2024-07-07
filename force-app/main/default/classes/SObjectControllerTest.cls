@@ -26,7 +26,7 @@ public with sharing class SObjectControllerTest {
         // Insert the user record
         insert oldUser;
         Account acc= new Account( Name='Infosys Limited', Type='Customer - Channel', Phone='8778975002',
-                                 Rating='Hot', AnnualRevenue=95000000000.00,OwnerId = oldUser.Id);
+                                 Rating='Hot', AnnualRevenue=95000000000.00, Active__c='Yes',OwnerId = oldUser.Id);
         insert acc;
         // Create a new user record
          User newUser = new User(
@@ -47,7 +47,7 @@ public with sharing class SObjectControllerTest {
 
     @isTest 
     public static void SObjectMethod() {
-        List<string> fields = new List<string>{'Name', 'Type', 'Phone', 'Rating', 'AnnualRevenue'};
+        List<string> fields = new List<string>{'Name', 'Type', 'Phone', 'Rating', 'AnnualRevenue', 'Active__c'};
 		Test.startTest();
             List<SObject> lstAccount = SObjectController.retriveSObjectDetails('Account',fields);
         	system.debug('Accounts-->'+lstAccount);
