@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Batter List" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <template for:each={list} for:item="item">
+                <div key={item.id} class="slds-box slds-m-bottom_small">
+                    <p><strong>ID:</strong> {item.Id}</p>
+                    <p><strong>Type:</strong> {item.type}</p>
+                    <p><strong>Category:</strong> {item.category}</p>
+                    <p><strong>SubCategory:</strong> {item.subCategory}</p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
+
