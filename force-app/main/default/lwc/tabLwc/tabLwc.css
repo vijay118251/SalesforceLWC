@@ -1,0 +1,121 @@
+.iconPosition {
+   top:1rem;
+   right:1rem;
+}
+
+.heading_style {
+    text-align: center;
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid #137f13;
+    background: #137f13;
+    color: white;
+    border-radius: 25px;
+}
+
+.gridContainer{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 20px 20px;
+}
+
+.boxContainer {
+    border: 1px solid #C6C6C6;
+    border-radius: 4px;
+}
+
+.boxContainer:hover {
+    border-radius: 4px;
+    border: 1px solid #0070D2;
+}
+
+.card {
+    box-shadow: 10px 10px 10px;
+}
+
+.label_style {
+    font-size: 15px;
+    color: #010701;
+}
+
+.flexContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.iconStyle {
+    --slds-c-icon-color-foreground-default: #010701;
+}
+
+.price_style {
+    font-size: 20px;
+    color: #010701;
+}
+
+.border {
+    border-top: 1px solid #C6C6C6;
+}
+
+.footer_style {
+    font-size: 15px;
+    color: #0070D2;
+    text-align: center;
+}
+
+.style {
+    font-size: 15px;
+    color: #0070D2;
+}
+
+.border:hover {
+    border-top: 1px solid #0070D2;
+}
+
+.counterContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.counterBorder {
+    border: 3px solid #C6C6C6;
+    border-radius: 4px;
+    padding: 7px;
+}
+
+.iconCounter:hover {
+    --slds-c-icon-color-foreground-default:#0070D2;
+    cursor: pointer;
+}
+
+.img-container {
+    background: #ededed;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+}
+
+.device-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.compactStyle {
+    text-align: center;
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid #0070D2;
+    background: #FFFFFF;
+    color: #010701;
+    border-radius: 12px;
+}
+
+.compactContainer {
+    display: flex;
+    gap: 10px;
+}

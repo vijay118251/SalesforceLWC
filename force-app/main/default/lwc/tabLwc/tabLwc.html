@@ -1,0 +1,53 @@
+<template>
+    <div class="slds-card card">
+        <div class="slds-m-around_medium slds-is-relative">
+            <lightning-tabset>
+                <lightning-tab label="Mobile Accessories">
+                    <div class="gridContainer">
+                        <template lwc:if={deviceDetails.length}>
+                            <template for:each={deviceDetails} for:item="deviceDetail">
+                                <div class="boxContainer" key={deviceDetail.name}>
+                                    <div class="slds-p-around_large">
+                                        <div class="flexContainer">
+                                            <div class="slds-text-heading_small heading_style"><b>{deviceDetail.category}</b></div>
+                                            <div class="iconStyle"><lightning-icon icon-name="utility:close" size="x-small"></lightning-icon></div>
+                                        </div>
+                                        <div class="slds-p-top_small">
+                                            <div class="img-container">
+                                                <img src={deviceDetail.imageUrl} class="device-image" alt={deviceDetail.name}>  
+                                            </div>
+                                        </div>
+                                        <div class="slds-text-body_small label_style slds-p-top_small">{deviceDetail.brand}</div>
+                                        <div class="slds-text-heading_large price_style"><b>{deviceDetail.name}</b> ({deviceDetail.color})</div>
+                                        <div class="slds-text-body_small price_style slds-p-top_x-small">+${deviceDetail.price}/mo</div>
+                                         <div class="compactContainer">
+                                            <div class="slds-text-body_small label_style slds-p-top_x-small">Compatible</div>
+                                            <template for:each={deviceDetail.compatible_with} for:item="compatible">
+                                                <div key={compatible} class="compactStyle">{compatible}</div>
+                                            </template>
+                                        </div>
+                                        <div class="slds-text-body_small style slds-p-top_x-small">New!</div>
+                                        <div class="slds-p-top_small">
+                                            <div class="counterContainer counterBorder">
+                                                <div class="iconCounter"><lightning-icon icon-name="utility:ban" size="x-small"></lightning-icon></div>
+                                                <div>1</div>
+                                                <div class="iconCounter"><lightning-icon icon-name="utility:new" size="x-small"></lightning-icon></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="border footer_style slds-p-around_medium">Buy Now</div>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                </lightning-tab>
+                <lightning-tab label="Item Two" title="2nd tab extended title">
+                    Two Content !
+                </lightning-tab>
+            </lightning-tabset>
+            <div class="slds-is-absolute iconPosition">
+                <lightning-icon icon-name="utility:apps" size="x-small"></lightning-icon>
+            </div>
+        </div>
+    </div>
+</template>
