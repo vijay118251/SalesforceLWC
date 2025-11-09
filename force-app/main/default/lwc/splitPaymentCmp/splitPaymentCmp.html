@@ -1,0 +1,105 @@
+<template>
+    <!-- Payment Split Component -->
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            <!-- Header Section -->
+            <div class="sectionGridStyle">
+                <div class="headerStyle">Payment Details</div>
+                <div><lightning-button-icon variant="brand" icon-name="utility:edit" onclick={handleEdit}></lightning-button-icon></div>
+            </div>
+            <!-- Body Section -->
+            <div class="bodyStyle">
+                <div class="slds-p-bottom_small" style="font-size:16px;font-weight:bold;">One-time Payment Details</div>
+                <div class="flexContainer">
+                    <div>Today's Remaining Charges</div>
+                    <div>{formattedRemainingCharges}</div>
+                </div>
+                <template for:each={paymentList} for:item="payment" for:index="index">
+                    <template if:true={payment.isVisible}>
+                        <div key={payment.id} class="paymentContainer slds-m-top_small">
+                            
+                            <!-- Collapsed summary -->
+                            <template if:true={payment.isCompleted}>
+                                <div class="paymentSubContainer">
+                                    <div>
+                                        <div>Payment Method</div>
+                                    </div>
+                                    <div>
+                                        <div class="splitContainer">
+                                            <lightning-icon variant="success" icon-name="utility:success" size="x-small"></lightning-icon>
+                                            <div class="slds-m-left_x-small"><b>Payment Information Collected</b></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-bottom_small" style="font-size:16px;font-weight:bold;">{payment.id}</div>
+                                <div class="cardStyle paymentSubContainer">
+                                    <div>
+                                        <p>{payment.cardDetails.name}</p>
+                                        <p>VISA ending in {maskedCard} | Exp: {payment.cardDetails.expiry} (${payment.paymentAmount})</p>
+                                    </div>
+                                    <div>
+                                        <lightning-button icon-name="utility:delete" icon-position="left" class="slds-m-left_x-small" variant="destructive-text" label="Delete Payment" onclick={handleDelete}></lightning-button>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- Expanded -->
+                            <template if:false={payment.isCompleted}>
+                                <div class="paymentSubContainer">
+                                    <div>
+                                        <div>Payment Method</div>
+                                    </div>
+                                    <div>
+                                        <div class="splitContainer">
+                                            <lightning-icon variant="brand" icon-name="utility:cut" size="x-small"></lightning-icon>
+                                            <lightning-input type="toggle" label="Split This Payment" message-toggle-active="" message-toggle-inactive="" checked={isSplitEnabled} disabled={payment.isFirstPayment} onchange={handleSplitToggle}></lightning-input>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-bottom_small" style="font-size:16px;font-weight:bold;">{payment.id}</div>  
+                                <div class="slds-p-bottom_small"> Split payment supports upto 3 tenders with card and cash. The deafult order is Card Payment first, followed by Cash.</div>
+
+                                <lightning-tabset>
+                                    <lightning-tab label="Debit/Credit Card" value="card" data-id={payment.id} data-tab="card">
+                                    <div class="cardStyle">
+                                        <div class="slds-p-bottom_xx-small" style="font-size:14px;font-weight:bold;">Total Charged on this payment method</div>
+                                        <div class="cardContainer">
+                                            <div class="slds-p-bottom_xx-small">Payment Amount</div>
+                                            <div>Remaining Balance</div>
+                                        </div>
+                                        <div class="cardContainer">
+                                            <lightning-input label="Payment Amount ($)" name="paymentAmount"
+                                                type="number" step="0.01"
+                                                value={payment.paymentAmount}
+                                                data-id={payment.id}
+                                                onchange={handleInputChange}
+                                                variant="label-hidden"
+                                                placeholder="$0.00">
+                                            </lightning-input>
+                                            <div>{formattedRemainingCharges}</div>
+                                            <lightning-button variant="brand-outline" label="Pay" onclick={handlePay} data-id={payment.id} disabled={payment.isPayEnable}></lightning-button>
+                                        </div>
+                                    </div>
+                                    <div class="buttonContainer">
+                                        <lightning-button variant="brand" label="Confirm" onclick={handleConfirm} disabled={payment.isDisabledConfirm} data-id={payment.id}></lightning-button>
+                                    </div>
+                                    </lightning-tab>
+                                    <lightning-tab label="Cash" value="2">
+                                        Two Content !
+                                    </lightning-tab>
+                                </lightning-tabset>  
+                            </template>
+                        </div>
+                    </template>
+
+                    <template if:true={payment.isDisabled}>
+                        <div key={payment.id} class="paymentContainer slds-m-top_small" style="background-color: whitesmoke;">
+                            <div>Payment Method</div>
+                            <div class="slds-p-bottom_small" style="font-size:16px;font-weight:bold;">{payment.id}</div>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>
