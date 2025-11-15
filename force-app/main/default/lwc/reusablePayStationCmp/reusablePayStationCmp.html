@@ -1,0 +1,78 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            <!-- Header Section -->
+            <div class="sectionGridStyle">
+                <div class="headerStyle">One-time Payment Details</div>
+                <div><lightning-button-icon variant="brand" icon-name="utility:edit" onclick={handleEdit}></lightning-button-icon></div>
+            </div>
+            <!-- Body Section -->
+            <div class="bodyStyle">
+                <lightning-tabset>
+                    <lightning-tab label="Debit/Credit Card" value="card" data-tab="card">
+                        <template lwc:if={isStationFetched}>
+                            <div class="splitContainer">
+                                <div class="slds-p-bottom_small" style="font-size:16px;font-weight:bold;">Station Details</div>
+                                <lightning-icon icon-name="utility:close" size="x-small" onclick={handleCloseModal}></lightning-icon>
+                            </div>
+                            <div class="ChargesContainer">
+                                <div>Today's Remaining Charges</div>
+                                <div>{formattedRemainingCharges}</div>
+                            </div>
+                            <template for:each={stationDetails} for:item="station" for:index="index">
+                                <div key={station.index} class="flexContainer">
+                                    <div><lightning-input type="radio" label={station.stationId} variant="label-hidden" disabled={station.isPayEnable} checked={station.selectedStation} data-id={station.stationId} onchange={handleSelectedStation}></lightning-input></div>
+                                    <div class="statusStyle">{station.stationId}</div>
+                                    <div class="statusStyle"> | {station.stationsStatus}</div>
+                                </div>
+                                <template lwc:if={station.selectedStation}>
+                                    <div key={station.index} class="cardStyle">
+                                        <div class="slds-p-bottom_xx-small" style="font-size:14px;font-weight:bold;">Total Charged on this payment method</div>
+                                        <lightning-input label="Payment Amount ($)" name="paymentAmount"
+                                            type="number" step="0.01"
+                                            onchange={handleInputChange}
+                                            placeholder="$0.00">
+                                        </lightning-input>
+                                    </div>
+                                    <div key={station.index} class="buttonContainer">
+                                        <lightning-button variant="brand" label="Confirm" onclick={handleConfirm}  data-id={station.stationId}></lightning-button>
+                                    </div>
+                                </template>
+                            </template>
+                            <template lwc:if={showPaymentModal}>
+                                <c-modal modal-class="slds-modal slds-fade-in-open slds-modal_small" onclosemodal={handleClosePaymentModal}>
+                                    <span slot="headercontent">
+                                        <lightning-button-icon class="slds-modal__close" title="Close" icon-name="utility:close"
+                                            icon-class="slds-button_icon-inverse" onclick={handleCloseModal}>
+                                        </lightning-button-icon>
+                                        <h2 class="slds-text-heading_medium">Processing Payment</h2>
+                                    </span>
+                                    <span slot="bodycontent">
+                                        <div class="flexModal">
+                                            <div class="slds-p-bottom_small" style="font-size:16px;font-weight:bold;">Payment In Progress... Please wait!</div>
+                                        </div>
+                                        <div class="flexModal slds-p-bottom_small">
+                                            <lightning-icon icon-name="utility:spinner" size="medium"></lightning-icon>
+                                        </div>
+                                        <div class="flexModal" style="margin-top:16px;font-size:18px;font-weight:bold;">
+                                            Closing in <span style="color:#0070d2;">{countdownTimer}</span> seconds
+                                        </div>
+                                    </span>
+                                    <span slot="footercontent">
+                                        <button class="slds-button slds-button_neutral" onclick={handleCloseModal} title="Cancel">Cancel</button>
+                                    </span>
+                                </c-modal>
+                            </template>
+                        </template>
+                        <template lwc:else>
+                            <lightning-button label="Pay On Station" onclick={handleFetchStation}></lightning-button>
+                        </template>
+                    </lightning-tab>
+                    <lightning-tab label="Cash" value="cash" data-tab="cash">
+                        Two Content !
+                    </lightning-tab>
+                </lightning-tabset>
+            </div>
+        </div>
+    </lightning-card>
+</template>
